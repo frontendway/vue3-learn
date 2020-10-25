@@ -7,6 +7,7 @@ import App from './learn/app/app.vue'
   嵌套动态子节点是否会重复对比相同的动态节点
   globalProperties 混入时机
   $refs.component.$el 原理
+  ces
 */
 const app = createApp(App)
 app.config.globalProperties.testAttr = 'globalAttr'
