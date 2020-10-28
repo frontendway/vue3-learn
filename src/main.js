@@ -1,6 +1,9 @@
 import { createApp } from 'vue'
 import App from './learn/app/app.vue'
 
+import Setup from './learn/setup/index.vue'
+import SetupWithContext from './learn/setup/with-context/index.vue'
+
 /* 
   组件渲染流程
   动态节点收集过程（包括嵌套动态节点的收集）
@@ -8,12 +11,15 @@ import App from './learn/app/app.vue'
   globalProperties 混入时机
   $refs.component.$el 原理
 */
-const app = createApp(App)
-app.config.globalProperties.testAttr = 'globalAttr'
-app.mount('#app')
+// const app = createApp(App)
+// app.config.globalProperties.testAttr = 'globalAttr'
+// app.mount('#app')
+
+/* setup */
+createApp(Setup).mount('#app')
+// createApp(SetupWithContext).mount('#app')
 
 /* 
   keep-alive
-  2 版本重写未再次分析
   #1742 未分析 
 */
