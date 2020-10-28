@@ -34,7 +34,11 @@ import CleanUp from './learn/reactive/cleanUp.vue'
 // createApp(SetupstateWithData).mount('#app')
 
 
-/* 响应式原理：依赖收集 与 派发通知 */
+/* 
+  响应式原理：依赖收集 与 派发通知 
+  延时响应式带来的性能提升
+  清除多余依赖原理
+*/
 createApp(Reactive).mount('#app')
 // createApp(Readonly).mount('#app')
 // createApp(Ref).mount('#app')
