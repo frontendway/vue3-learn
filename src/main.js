@@ -3,6 +3,7 @@ import App from './learn/app/app.vue'
 
 import Setup from './learn/setup/index.vue'
 import SetupWithContext from './learn/setup/with-context/index.vue'
+import SetupstateWithData from './learn/setup/setupstate-with-data.vue'
 
 /* 
   组件渲染流程
@@ -15,9 +16,14 @@ import SetupWithContext from './learn/setup/with-context/index.vue'
 // app.config.globalProperties.testAttr = 'globalAttr'
 // app.mount('#app')
 
-/* setup */
+/* 
+  setupState 可在模板中访问原理
+  setupContext 传入条件
+  setupState 与 data 优先级
+*/
 createApp(Setup).mount('#app')
 // createApp(SetupWithContext).mount('#app')
+// createApp(SetupstateWithData).mount('#app')
 
 /* 
   keep-alive

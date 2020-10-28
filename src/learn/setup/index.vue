@@ -2,7 +2,7 @@
   <button 
     @click="increment"
   >
-    Count is: {{ state.count }}, double is: {{ state.double }}
+    Count is: {{ state.count }}
   </button>
 </template>
 
@@ -12,8 +12,7 @@ import { reactive, computed } from 'vue'
 export default {
   setup() {
     const state = reactive({
-      count: 0,
-      double: computed(() => state.count * 2)
+      count: 0
     })
     function increment() {
       state.count++

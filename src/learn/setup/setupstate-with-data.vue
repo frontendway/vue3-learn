@@ -16,11 +16,13 @@ export default {
       msg
     }
   },
+
   data () {
     return {
       msg: 'msg from data'
     }
   },
+  
   methods: {
     random () {
       this.msg = Math.random()

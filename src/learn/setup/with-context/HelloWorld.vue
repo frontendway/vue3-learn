@@ -8,6 +8,7 @@ export default {
   props: {
     msg: String
   },
+  
   setup (props, { emit }) {
     function onClick () {
       emit('toggle')

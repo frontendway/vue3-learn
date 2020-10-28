@@ -10,11 +10,14 @@ export default {
   components: {
     HelloWorld
   },
+
   setup () {
     const msg = ref('hello world')
+
     function toggle () {
       msg.value = msg.value === 'hello world' ? 'hello vue' : 'hello world'
     }
+    
     return {
       toggle,
       msg
