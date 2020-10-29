@@ -10,6 +10,9 @@ import Readonly from './learn/reactive/readonly.vue'
 import Ref from './learn/reactive/ref.vue'
 import CleanUp from './learn/reactive/cleanUp.vue'
 
+import Computed from './learn/computed/index.vue'
+import Computed2 from './learn/computed/computed2.vue'
+
 /* 
   组件渲染流程
   动态节点收集过程（包括嵌套动态节点的收集）
@@ -39,10 +42,18 @@ import CleanUp from './learn/reactive/cleanUp.vue'
   延时响应式带来的性能提升
   清除多余依赖原理
 */
-createApp(Reactive).mount('#app')
+// createApp(Reactive).mount('#app')
 // createApp(Readonly).mount('#app')
 // createApp(Ref).mount('#app')
 // createApp(CleanUp).mount('#app')
+
+
+/* 
+  计算属性
+  嵌套 computed
+*/
+createApp(Computed).mount('#app')
+// createApp(Coumpted2).mount('#app')
 
 
 /* 
