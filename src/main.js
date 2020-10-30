@@ -13,6 +13,14 @@ import CleanUp from './learn/reactive/cleanUp.vue'
 import Computed from './learn/computed/index.vue'
 import Computed2 from './learn/computed/computed2.vue'
 
+
+import Watch1 from './learn/watch/watch1.vue'
+import Watch2 from './learn/watch/watch2.vue'
+import Watch3 from './learn/watch/watch3.vue'
+import Watch4 from './learn/watch/watch4.vue'
+import Watch5 from './learn/watch/watch5.vue'
+
+
 /* 
   组件渲染流程
   动态节点收集过程（包括嵌套动态节点的收集）
@@ -54,6 +62,22 @@ import Computed2 from './learn/computed/computed2.vue'
 */
 createApp(Computed).mount('#app')
 // createApp(Coumpted2).mount('#app')
+
+
+/* 侦听 getter 函数 */
+// createApp(Watch1).mount('#app')
+/* 直接侦听响应式对象 */
+// createApp(Watch2).mount('#app')
+/* 监听生层次的响应式对象，分析 traverse 次数 */
+// createApp(Watch21).mount('#app')
+/* 不执行 traverse 依然可以监测数据变化 */
+// createApp(Watch22).mount('#app')
+/* 侦听多个响应式对象组成的数组 */
+// createApp(Watch3).mount('#app')
+/* watchEffect */
+// createApp(Watch4).mount('#app')
+/* onInvalidate */
+// createApp(Watch5).mount('#app')
 
 
 /* 
