@@ -60,14 +60,14 @@ import Watch5 from './learn/watch/watch5.vue'
   计算属性
   嵌套 computed
 */
-createApp(Computed).mount('#app')
+// createApp(Computed).mount('#app')
 // createApp(Coumpted2).mount('#app')
 
 
 /* 侦听 getter 函数 */
 // createApp(Watch1).mount('#app')
 /* 直接侦听响应式对象 */
-// createApp(Watch2).mount('#app')
+createApp(Watch2).mount('#app')
 /* 监听生层次的响应式对象，分析 traverse 次数 */
 // createApp(Watch21).mount('#app')
 /* 不执行 traverse 依然可以监测数据变化 */

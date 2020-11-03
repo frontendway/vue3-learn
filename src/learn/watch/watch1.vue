@@ -15,6 +15,12 @@ export default {
       console.log('watch1', count, prevCount)
     })
 
+    // watch(() => state.count, (count, prevCount) => {
+    //   console.log('watch1', count, prevCount)
+    // }, {
+    //   immediate: true
+    // })
+
     /* 
       不 return 则回调不会执行，因为每次求的值都是 undefined，新旧值没有发生变化，则不会执行回调函数
       但每次监听的 source 都会执行
