@@ -21,7 +21,7 @@ export default {
       在执行 watch 函数的时候未执行 runner 之前会访问 count.state
       此时 activeEffect 是 undefined 所以并不会做依赖收集
     */
-    const unWatch = watch(count.state, (newVal, oldVal) => { 
+    const unWatch = watch(count.state, (newVal, oldVal) => {
       console.log(newVal, oldVal)
     })
 

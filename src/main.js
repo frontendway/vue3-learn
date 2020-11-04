@@ -13,12 +13,16 @@ import CleanUp from './learn/reactive/cleanUp.vue'
 import Computed from './learn/computed/index.vue'
 import Computed2 from './learn/computed/computed2.vue'
 
-
 import Watch1 from './learn/watch/watch1.vue'
 import Watch2 from './learn/watch/watch2.vue'
+import Watch21 from './learn/watch/watch2.1.vue'
+import Watch22 from './learn/watch/watch2.2.vue'
 import Watch3 from './learn/watch/watch3.vue'
 import Watch4 from './learn/watch/watch4.vue'
 import Watch5 from './learn/watch/watch5.vue'
+import Watch6 from './learn/watch/watch6.vue'
+
+import Hook from './learn/hook/index.vue'
 
 
 /* 
@@ -67,8 +71,8 @@ import Watch5 from './learn/watch/watch5.vue'
 /* 侦听 getter 函数 */
 // createApp(Watch1).mount('#app')
 /* 直接侦听响应式对象 */
-createApp(Watch2).mount('#app')
-/* 监听生层次的响应式对象，分析 traverse 次数 */
+// createApp(Watch2).mount('#app')
+/* 监听深层次的响应式对象，分析 traverse 次数 */
 // createApp(Watch21).mount('#app')
 /* 不执行 traverse 依然可以监测数据变化 */
 // createApp(Watch22).mount('#app')
@@ -78,7 +82,14 @@ createApp(Watch2).mount('#app')
 // createApp(Watch4).mount('#app')
 /* onInvalidate */
 // createApp(Watch5).mount('#app')
+/* 循环更新 */
+createApp(Watch6).mount('#app')
 
+
+/* 生命周期钩子函数 */
+// createApp(Hook).mount('#app')
+// 追踪数据依赖收集与数据修改派发通知来源
+// createApp(TrackTrigger).mount('#app')
 
 /* 
   keep-alive
