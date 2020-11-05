@@ -23,6 +23,9 @@ import Watch5 from './learn/watch/watch5.vue'
 import Watch6 from './learn/watch/watch6.vue'
 
 import Hook from './learn/hook/index.vue'
+import TrackTrigger from './learn/hook/track-trigger.vue'
+
+import ProvideInject from './learn/provide-inject/index.vue'
 
 
 /* 
@@ -83,13 +86,17 @@ import Hook from './learn/hook/index.vue'
 /* onInvalidate */
 // createApp(Watch5).mount('#app')
 /* 循环更新 */
-createApp(Watch6).mount('#app')
+// createApp(Watch6).mount('#app')
 
 
 /* 生命周期钩子函数 */
 // createApp(Hook).mount('#app')
 // 追踪数据依赖收集与数据修改派发通知来源
 // createApp(TrackTrigger).mount('#app')
+
+
+/* Provide-Inject */
+createApp(ProvideInject).mount('#app')
 
 /* 
   keep-alive
