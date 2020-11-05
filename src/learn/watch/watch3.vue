@@ -13,7 +13,8 @@ export default {
     const count2 = ref(1)
 
     // 侦听多个响应式对象
-    watch([count1, count2], ([count1, count2], [preCount1, preCount2]) => { 
+    watch([count1, count2], ([count1, count2], [preCount1, preCount2], onInvalidate) => { 
+      debugger
       console.log('watch3', count1, count2, preCount1, preCount2)
     })
 
