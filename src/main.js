@@ -27,6 +27,7 @@ import TrackTrigger from './learn/hook/track-trigger.vue'
 
 import ProvideInject from './learn/provide-inject/index.vue'
 
+import PropsLearn from './learn/props/index.vue'
 
 /* 
   组件渲染流程
@@ -96,7 +97,10 @@ import ProvideInject from './learn/provide-inject/index.vue'
 
 
 /* Provide-Inject */
-createApp(ProvideInject).mount('#app')
+// createApp(ProvideInject).mount('#app')
+
+
+createApp(PropsLearn).mount('#app')
 
 /* 
   keep-alive
