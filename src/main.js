@@ -27,6 +27,11 @@ import TrackTrigger from './learn/hook/track-trigger.vue'
 
 import ProvideInject from './learn/provide-inject/index.vue'
 
+import BlockComponent from './learn/block/component.vue'
+import BlockDynamicComponent from './learn/block/dynamic-component/index.vue'
+import BlockDynamicProps from './learn/block/dynamic-props/index.vue'
+import BlockVIf from './learn/block/v-if/index.vue'
+
 import PropsLearn from './learn/props/index.vue'
 
 /* 
@@ -100,7 +105,23 @@ import PropsLearn from './learn/props/index.vue'
 // createApp(ProvideInject).mount('#app')
 
 
-createApp(PropsLearn).mount('#app')
+/* 
+  block tree:
+    vue3 为了运行时更新性能，设计了 block tree
+    block tree 就是将模板基于动态节点指定切割的嵌套区块，每个区块只需要一个数组来追踪自身包含的动态节点
+  为什么某些场景下需要多个 block，一个 block 是否可以？
+    block 是为了收集动态节点以提高更新时的对比性能
+    vue3 中普通组件、动态组件、v-if、svg、keep-alive 内容都是有可能发生变化的，所以需要收集它们
+    所以 vue3 为它们都创建了属于自己的 block，使得能够收集它们的动态子节点，收集完毕后再将自己作为动态子节点收集到父 block 中
+*/
+// createApp(BlockComponent).mount('#app')
+createApp(BlockDynamicComponent).mount('#app')
+// createApp(BlockDynamicProps).mount('#app')
+// createApp(BlockVIf).mount('#app')
+
+
+// createApp(PropsLearn).mount('#app')
+
 
 /* 
   keep-alive
