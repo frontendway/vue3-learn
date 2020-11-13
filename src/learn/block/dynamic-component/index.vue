@@ -1,17 +1,17 @@
 <template>
   <section>
     <h3>动态组件，测试 block 区块</h3>
-    <component :is="state.dynamic" />
-    <button @click="toggle">切换组件</button>
     <keep-alive>
       <component :is="state.dynamic" />
     </keep-alive>
+    <button @click="toggle">切换组件</button>
   </section>
 </template>
 
 <script>
-/* 
+/*
   非动态组件即普通组件也会被推入 block 中
+  <component :is="state.dynamic" />
 */
 import { reactive } from 'vue'
 import Dynamic1 from './dynamic1.vue'

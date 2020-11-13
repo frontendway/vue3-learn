@@ -1,15 +1,17 @@
 <template>
   <section>
     <h3>v-if block tree</h3>
-    <div v-if="state.flag">{{ state.flag }}</div>
-    <p v-else>{{ state.flag }}</p>
+    <div v-if="state.flag">
+      <h3>{{ state.flag }}</h3>
+    </div>
+    <p v-else>
+      <span>{{ state.flag }}</span>
+    </p>
+    <button @click="state.flag = !state.flag">toggle</button>
   </section>
 </template>
 
 <script>
-/* 
-  
-*/
 import { reactive } from 'vue'
 
 export default {
