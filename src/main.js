@@ -109,15 +109,13 @@ import PropsLearn from './learn/props/index.vue'
   block tree:
     vue3 为了运行时更新性能，设计了 block tree
     block tree 就是将模板基于动态节点指令切割的嵌套区块，每个区块只需要一个数组来追踪自身包含的动态节点
-  为何动态组件、svg、foreignObject、teleport、suspense、keep-alive 要单独维护一个 block？
-  为何 v-f 分支都要单独创建 block？
+  为何动态组件、svg、foreignObject、teleport、suspense、keep-alive、v-if 要单独维护一个 block？
     条件语句每次只渲染一部分，那么它内部的动态节点是没法被外部的 block 收集到的，所以需要单独一个 block 来维护内部的动态节点
 */
 // createApp(BlockComponent).mount('#app')
-createApp(BlockDynamicComponent).mount('#app')
+// createApp(BlockDynamicComponent).mount('#app')
 // createApp(BlockDynamicKey).mount('#app')
 // createApp(BlockVIf).mount('#app')
-
 
 // createApp(PropsLearn).mount('#app')
 
