@@ -117,7 +117,9 @@ import PropsLearn from './learn/props/index.vue'
 // createApp(BlockDynamicKey).mount('#app')
 // createApp(BlockVIf).mount('#app')
 
-// createApp(PropsLearn).mount('#app')
+
+/* props */
+createApp(PropsLearn).mount('#app')
 
 
 /* 

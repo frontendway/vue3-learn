@@ -6,6 +6,13 @@
 
 <script>
 /* 
+  <Child3 
+    :title="state.title"
+    content=""
+    content
+  />
+  content="" === content
+
   外部只传入 content 数据
   props 的类型数组中有 Boolean 类型，并且 Boolean 的索引小于 String 的索引
     content 这个 key 在父组件传递的 props 集合中，value === '' || value === 'content' 都返回 true
