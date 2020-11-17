@@ -12,8 +12,10 @@ export default {
     title: String,
     content: [Boolean, String]
   },
+
   setup (props) {
     watchEffect(() => {
+      debugger
       console.log(props.title)
     })
 
