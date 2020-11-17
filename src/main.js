@@ -34,6 +34,10 @@ import BlockVIf from './learn/block/v-if/index.vue'
 
 import PropsLearn from './learn/props/index.vue'
 
+import DefaultSlot from './learn/slot/default-slot/index.vue'
+import NameSlot from './learn/slot/name-slot/index.vue'
+import NamespaceSlot from './learn/slot/namespace-slot/index.vue'
+
 /* 
   组件渲染流程
   动态节点收集过程（包括嵌套动态节点的收集）
@@ -119,10 +123,16 @@ import PropsLearn from './learn/props/index.vue'
 
 
 /* props */
-createApp(PropsLearn).mount('#app')
+// createApp(PropsLearn).mount('#app')
+
+
+/* slot */
+createApp(DefaultSlot).mount('#app')
+// createApp(NameSlot).mount('#app')
+// createApp(NamespaceSlot).mount('#app')
 
 
 /* 
   keep-alive
-  #1742 未分析 
+  #1742 未分析
 */
