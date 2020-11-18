@@ -126,10 +126,16 @@ import NamespaceSlot from './learn/slot/namespace-slot/index.vue'
 // createApp(PropsLearn).mount('#app')
 
 
-/* slot */
-createApp(DefaultSlot).mount('#app')
+/* 
+  slot 原理:
+    1.编译生成的 render 函数，子组件的 vnode 的 children 是一个对象
+    2.创建子组件 vnode 时执行的 normalizeChildren 将 shapeFlag = slot | statefulComponent
+    3.子组件 initSlot 时将 children 对象挂载到子组件 instance.slots 中，完成了父组件的 vnode 传递给子组件的过程
+    4.子组件生成 subTree 的过程中，执行 renderSlot 将返回结果作为子组件的 children
+*/
+// createApp(DefaultSlot).mount('#app')
 // createApp(NameSlot).mount('#app')
-// createApp(NamespaceSlot).mount('#app')
+createApp(NamespaceSlot).mount('#app')
 
 
 /* 

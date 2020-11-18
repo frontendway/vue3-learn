@@ -40,7 +40,6 @@ import Child4 from './child4.vue'
       校验
       将 props 转为响应式
   
-
   为什么是 shallowReactive？
   子组件修改 props 触发报错的原理？
 

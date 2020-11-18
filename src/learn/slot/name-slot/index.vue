@@ -1,12 +1,12 @@
 <template>
   <layout>
-    <template v-slot:header>
+    <template #header>
       <h1>{{ header }}</h1>
     </template>
-    <template v-slot:default>
+    <template #default>
       <p>{{ main }}</p>
     </template>
-    <template v-slot:footer>
+    <template #footer>
       <p>{{ footer }}</p>
     </template>
   </layout>  
@@ -19,6 +19,7 @@ export default {
   components: {
     layout: Layout
   },
+
   data () {
     return {
       header: 'header title',

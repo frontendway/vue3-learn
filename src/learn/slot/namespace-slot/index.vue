@@ -1,8 +1,10 @@
 <template>
   <list>
-    <template v-slot:default="slotProps">
-      <i class="icon icon-check"></i>
-      <span class="green">{{ slotProps.item }}</span>
+    <template #testOne="slotProps">
+      <span>{{ slotProps.title }}</span>
+    </template>
+    <template #testTwo="slotProps">
+      <span>{{ slotProps.title }}</span>
     </template>
   </list>
 </template>
