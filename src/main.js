@@ -141,8 +141,16 @@ import Focus from './learn/directive/focus.vue'
 // createApp(NamespaceSlot).mount('#app')
 
 
-/* 全局指令 */
-const logDirective = {
+/* 
+  指令:
+    1.全局指令注册 app.directive() 就是往 app.context.directives 对象上扩展指令定义
+    2.render 函数执行时先执行 resolveDirective 根据指令名称解析出指令定义
+    3.withDirectives 将指令挂载到 vnode.dirs 数组中
+    4.mountElement 时执行 vnode.dirs 中的 created 和 beforeMount queuePostRenderEffect -> mounted
+    5.patchElement 时执行 vnode.dirs 中的 beforeUpdate 和 queuePostRenderEffect -> updated
+    6.unmount -> 时执行 vnode.dirs 中的 beforeUnmount 和 queuePostRenderEffect -> unmounted
+*/
+const globalLog = {
   beforeMount() {
     console.log('log directive before mount')
   },
@@ -163,7 +171,7 @@ const logDirective = {
   }
 }
 const app = createApp(Global)
-app.directive('log', logDirective)
+app.directive('log', globalLog)
 app.mount('#app')
 /* 局部指令 */
 // createApp(Focus).mount('#app')
