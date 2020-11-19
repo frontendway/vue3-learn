@@ -38,6 +38,9 @@ import DefaultSlot from './learn/slot/default-slot/index.vue'
 import NameSlot from './learn/slot/name-slot/index.vue'
 import NamespaceSlot from './learn/slot/namespace-slot/index.vue'
 
+import Global from './learn/directive/index.vue'
+import Focus from './learn/directive/focus.vue'
+
 /* 
   组件渲染流程
   动态节点收集过程（包括嵌套动态节点的收集）
@@ -135,7 +138,35 @@ import NamespaceSlot from './learn/slot/namespace-slot/index.vue'
 */
 // createApp(DefaultSlot).mount('#app')
 // createApp(NameSlot).mount('#app')
-createApp(NamespaceSlot).mount('#app')
+// createApp(NamespaceSlot).mount('#app')
+
+
+/* 全局指令 */
+const logDirective = {
+  beforeMount() {
+    console.log('log directive before mount')
+  },
+  mounted() {
+    console.log('log directive mounted')
+  },
+  beforeUpdate() {
+    console.log('log directive before update')
+  },
+  updated() {
+    console.log('log directive updated')
+  },
+  beforeUnmount() {
+    console.log('log directive beforeUnmount')
+  },
+  unmounted() {
+    console.log('log directive unmounted')
+  }
+}
+const app = createApp(Global)
+app.directive('log', logDirective)
+app.mount('#app')
+/* 局部指令 */
+// createApp(Focus).mount('#app')
 
 
 /* 
