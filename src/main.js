@@ -154,19 +154,19 @@ const globalLog = {
   beforeMount() {
     console.log('log directive before mount')
   },
-  mounted() {
+  mounted () {
     console.log('log directive mounted')
   },
-  beforeUpdate() {
+  beforeUpdate () {
     console.log('log directive before update')
   },
-  updated() {
+  updated () {
     console.log('log directive updated')
   },
-  beforeUnmount() {
+  beforeUnmount () {
     console.log('log directive beforeUnmount')
   },
-  unmounted() {
+  unmounted () {
     console.log('log directive unmounted')
   }
 }
@@ -177,7 +177,7 @@ app.mount('#app')
 // createApp(Focus).mount('#app')
 
 
-/* 
+/*  
   keep-alive
   #1742 未分析
 */
