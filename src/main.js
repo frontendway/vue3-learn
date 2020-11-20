@@ -41,6 +41,9 @@ import NamespaceSlot from './learn/slot/namespace-slot/index.vue'
 import Global from './learn/directive/index.vue'
 import Focus from './learn/directive/focus.vue'
 
+import AppModel from './learn/v-model/index.vue'
+import CustomInput from './learn/v-model/custom-input.vue'
+
 /* 
   组件渲染流程
   动态节点收集过程（包括嵌套动态节点的收集）
@@ -150,34 +153,50 @@ import Focus from './learn/directive/focus.vue'
     5.patchElement 时执行 vnode.dirs 中的 beforeUpdate 和 queuePostRenderEffect -> updated
     6.unmount -> 时执行 vnode.dirs 中的 beforeUnmount 和 queuePostRenderEffect -> unmounted
 */
-const globalLog = {
-  beforeMount() {
-    console.log('log directive before mount')
-  },
-  mounted () {
-    console.log('log directive mounted')
-  },
-  beforeUpdate () {
-    console.log('log directive before update')
-  },
-  updated () {
-    console.log('log directive updated')
-  },
-  beforeUnmount () {
-    console.log('log directive beforeUnmount')
-  },
-  unmounted () {
-    console.log('log directive unmounted')
-  }
-}
-const app = createApp(Global)
-app.directive('log', globalLog)
-app.mount('#app')
+// const globalLog = {
+//   beforeMount() {
+//     console.log('log directive before mount')
+//   },
+//   mounted () {
+//     console.log('log directive mounted')
+//   },
+//   beforeUpdate () {
+//     console.log('log directive before update')
+//   },
+//   updated () {
+//     console.log('log directive updated')
+//   },
+//   beforeUnmount () {
+//     console.log('log directive beforeUnmount')
+//   },
+//   unmounted () {
+//     console.log('log directive unmounted')
+//   }
+// }
+// const app = createApp(Global)
+// app.directive('log', globalLog)
+// app.mount('#app')
 /* 局部指令 */
 // createApp(Focus).mount('#app')
 
 
-/*  
+/* 
+  v-model:
+    1.首次渲染
+      withDirectives 将内置 vmodel 指令定义混入到 vnode.dirs 数组中
+      mountElement 执行 vmodel 的 created 函数，就是给 input元素绑定一堆的事件函数
+      然后执行 vmodel 的 mounted 函数，对 input type 是 range 情况的处理
+    2.更新渲染
+      input 中输入内容，触发绑定事件，内部调用 el._assign 做数据更新
+      trigger 派发通知
+      执行 vmodel 的 beforeUpdate 重置 input.value 为最新值
+*/
+const app = createApp(AppModel)
+app.component('custom-input', CustomInput)
+app.mount('#app')
+
+
+/*
   keep-alive
   #1742 未分析
 */
