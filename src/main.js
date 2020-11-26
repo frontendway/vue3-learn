@@ -44,6 +44,11 @@ import Focus from './learn/directive/focus.vue'
 import AppModel from './learn/v-model/index.vue'
 import CustomInput from './learn/v-model/custom-input.vue'
 
+import TeleportElement from './learn/teleport/element.vue'
+import TeleportComponent from './learn/teleport/component/index.vue'
+
+import AppKeepAlive from './learn/keep-alive/index.vue'
+
 /* 
   组件渲染流程
   动态节点收集过程（包括嵌套动态节点的收集）
@@ -191,9 +196,48 @@ import CustomInput from './learn/v-model/custom-input.vue'
       trigger 派发通知
       执行 vmodel 的 beforeUpdate 重置 input.value 为最新值
 */
-const app = createApp(AppModel)
-app.component('custom-input', CustomInput)
-app.mount('#app')
+// const app = createApp(AppModel)
+// app.component('custom-input', CustomInput)
+// app.mount('#app')
+
+
+/* 
+  teleport:
+    1.首次渲染
+      创建完 teleport 内置组件其 vnode 的 shapeFlag & 64 判断为 teleport 组件后，直接执行 type.process()
+      拿到 target，并判断是否 disabled 来觉得起子节点挂载的父节点是 target 还是 container
+
+*/
+// createApp(TeleportElement).mount('#app')
+// createApp(TeleportComponent).mount('#app')
+
+
+/* 
+  keep-alive:
+    首次渲染
+      1.创建 keep-alive 组件 vnode 时，由于 children 是数组而非对象，所以 vnode.shapeFlag |= ARRAY_CHILDREN(16) 结果值是 20
+      2.执行 setupComponent -> initSlot 中 vnode.shapeFlag & SLOTS_CHILDREN(32) 不满足走 else 逻辑
+        将 instance.slots.default = () => normalized，normalized 就是经过 normalizeSlotValue 处理后的数组
+      3.执行 keep-alive 组件 vnode 的 setup，混入 onMounted onUpdated onBeforeUnmount 钩子函数，将返回值渲染函数赋值给 instance.render
+      4.patch -> instance.render 执行时将 peningCacheKey 赋值为当前渲染 vnode 的 key
+        vnode.shapeFlag |= COMPONENT_SHOULD_KEEP_ALIVE(256)，避免 vnode 被卸载
+      5.mounted hook -> queuePostRenderEffect -> flushPostFlushCbs -> cacheSubtree
+    重新渲染
+      1.切换 flag 值，父组件重新渲染，renderComponentRoot(instance) 生成 nextTree，并进行新旧 vnode 的 patch 过程
+      2.patchBlockChildren -> patch -> processComponent -> updateComponent
+        instance.next = n2
+        instance.update()
+        进行 keep-alive 组件的重新渲染
+      3.renderComponentRoot(instance) -> render.call，执行 keep-alive 的渲染函数
+      4.返回最新的 vnode 作为 keep-alive 的渲染 vnode
+      5.patch 新旧的 keep-alive 组件 vnode，patchBlockChildren -> patch(childA, childB)
+        unmount(childA)
+        n1 = null
+        processComponent 时 n2.shapeFlag & COMPONENT_KEPT_ALIVE(512) -> parentComponent.ctx.activate -> move 移动真实元素进行挂载
+        此时则不会执行一整套创建组件的过程，从而优化了性能
+      5.updated hook -> queuePostRenderEffect -> flushPostFlushCbs -> cacheSubtree
+*/
+createApp(AppKeepAlive).mount('#app')
 
 
 /*
