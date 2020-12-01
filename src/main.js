@@ -49,6 +49,8 @@ import TeleportComponent from './learn/teleport/component/index.vue'
 
 import AppKeepAlive from './learn/keep-alive/index.vue'
 
+import TransitionElm from './learn/transition/element.vue'
+
 /* 
   组件渲染流程
   动态节点收集过程（包括嵌套动态节点的收集）
@@ -237,10 +239,14 @@ import AppKeepAlive from './learn/keep-alive/index.vue'
         此时则不会执行一整套创建组件的过程，从而优化了性能
       5.updated hook -> queuePostRenderEffect -> flushPostFlushCbs -> cacheSubtree
 */
-createApp(AppKeepAlive).mount('#app')
+// createApp(AppKeepAlive).mount('#app')
 
 
-/*
-  keep-alive
-  #1742 未分析
+/* 
+  transtion:
+    transition 组件是基于 baseTransition 的高阶函数式组件
+  高阶组件:
+    当前函数返回的是一个组件函数
+
 */
+createApp(TransitionElm).mount('#app')
