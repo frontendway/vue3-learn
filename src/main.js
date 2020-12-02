@@ -1,55 +1,4 @@
 import { createApp } from 'vue'
-import App from './learn/app/app.vue'
-
-import Setup from './learn/setup/index.vue'
-import SetupWithContext from './learn/setup/with-context/index.vue'
-import SetupstateWithData from './learn/setup/setupstate-with-data.vue'
-
-import Reactive from './learn/reactive/index.vue'
-import Readonly from './learn/reactive/readonly.vue'
-import Ref from './learn/reactive/ref.vue'
-import CleanUp from './learn/reactive/cleanUp.vue'
-
-import Computed from './learn/computed/index.vue'
-import Computed2 from './learn/computed/computed2.vue'
-
-import Watch1 from './learn/watch/watch1.vue'
-import Watch2 from './learn/watch/watch2.vue'
-import Watch21 from './learn/watch/watch2.1.vue'
-import Watch22 from './learn/watch/watch2.2.vue'
-import Watch3 from './learn/watch/watch3.vue'
-import Watch4 from './learn/watch/watch4.vue'
-import Watch5 from './learn/watch/watch5.vue'
-import Watch6 from './learn/watch/watch6.vue'
-
-import Hook from './learn/hook/index.vue'
-import TrackTrigger from './learn/hook/track-trigger.vue'
-
-import ProvideInject from './learn/provide-inject/index.vue'
-
-import BlockComponent from './learn/block/component.vue'
-import BlockDynamicComponent from './learn/block/dynamic-component/index.vue'
-import BlockDynamicKey from './learn/block/dynamic-key/index.vue'
-import BlockVIf from './learn/block/v-if/index.vue'
-
-import PropsLearn from './learn/props/index.vue'
-
-import DefaultSlot from './learn/slot/default-slot/index.vue'
-import NameSlot from './learn/slot/name-slot/index.vue'
-import NamespaceSlot from './learn/slot/namespace-slot/index.vue'
-
-import Global from './learn/directive/index.vue'
-import Focus from './learn/directive/focus.vue'
-
-import AppModel from './learn/v-model/index.vue'
-import CustomInput from './learn/v-model/custom-input.vue'
-
-import TeleportElement from './learn/teleport/element.vue'
-import TeleportComponent from './learn/teleport/component/index.vue'
-
-import AppKeepAlive from './learn/keep-alive/index.vue'
-
-import TransitionElm from './learn/transition/element.vue'
 
 /* 
   组件渲染流程
@@ -58,6 +7,7 @@ import TransitionElm from './learn/transition/element.vue'
   globalProperties 混入时机
   $refs.component.$el 原理
 */
+// import App from './learn/app/app.vue'
 // const app = createApp(App)
 // app.config.globalProperties.testAttr = 'globalAttr'
 // app.mount('#app')
@@ -70,6 +20,9 @@ import TransitionElm from './learn/transition/element.vue'
     模板编译后的结果访问的是 $data.msg 并依赖收集，而修改 msg 值是派发的 setupState 的 msg
     但 setupState.msg 模板中并未使用，所以没有做依赖收集，导致无法派发通知，最终页面无任何响应
 */
+// import Setup from './learn/setup/index.vue'
+// import SetupWithContext from './learn/setup/with-context/index.vue'
+// import SetupstateWithData from './learn/setup/setupstate-with-data.vue'
 // createApp(Setup).mount('#app')
 // createApp(SetupWithContext).mount('#app')
 // createApp(SetupstateWithData).mount('#app')
@@ -80,6 +33,10 @@ import TransitionElm from './learn/transition/element.vue'
   延时响应式带来的性能提升
   清除多余依赖原理
 */
+// import Reactive from './learn/reactive/index.vue'
+// import Readonly from './learn/reactive/readonly.vue'
+// import Ref from './learn/reactive/ref.vue'
+// import CleanUp from './learn/reactive/cleanUp.vue'
 // createApp(Reactive).mount('#app')
 // createApp(Readonly).mount('#app')
 // createApp(Ref).mount('#app')
@@ -90,11 +47,21 @@ import TransitionElm from './learn/transition/element.vue'
   计算属性
   嵌套 computed
 */
+// import Computed from './learn/computed/index.vue'
+// import Computed2 from './learn/computed/computed2.vue'
 // createApp(Computed).mount('#app')
 // createApp(Coumpted2).mount('#app')
 
 
 /* 侦听 getter 函数 */
+// import Watch1 from './learn/watch/watch1.vue'
+// import Watch2 from './learn/watch/watch2.vue'
+// import Watch21 from './learn/watch/watch2.1.vue'
+// import Watch22 from './learn/watch/watch2.2.vue'
+// import Watch3 from './learn/watch/watch3.vue'
+// import Watch4 from './learn/watch/watch4.vue'
+// import Watch5 from './learn/watch/watch5.vue'
+// import Watch6 from './learn/watch/watch6.vue'
 // createApp(Watch1).mount('#app')
 /* 直接侦听响应式对象 */
 // createApp(Watch2).mount('#app')
@@ -113,12 +80,15 @@ import TransitionElm from './learn/transition/element.vue'
 
 
 /* 生命周期钩子函数 */
+// import Hook from './learn/hook/index.vue'
+// import TrackTrigger from './learn/hook/track-trigger.vue'
 // createApp(Hook).mount('#app')
 // 追踪数据依赖收集与数据修改派发通知来源
 // createApp(TrackTrigger).mount('#app')
 
 
 /* Provide-Inject */
+// import ProvideInject from './learn/provide-inject/index.vue'
 // createApp(ProvideInject).mount('#app')
 
 
@@ -129,6 +99,10 @@ import TransitionElm from './learn/transition/element.vue'
   为何动态组件、svg、foreignObject、teleport、suspense、keep-alive、v-if 要单独维护一个 block？
     条件语句每次只渲染一部分，那么它内部的动态节点是没法被外部的 block 收集到的，所以需要单独一个 block 来维护内部的动态节点
 */
+// import BlockComponent from './learn/block/component.vue'
+// import BlockDynamicComponent from './learn/block/dynamic-component/index.vue'
+// import BlockDynamicKey from './learn/block/dynamic-key/index.vue'
+// import BlockVIf from './learn/block/v-if/index.vue'
 // createApp(BlockComponent).mount('#app')
 // createApp(BlockDynamicComponent).mount('#app')
 // createApp(BlockDynamicKey).mount('#app')
@@ -136,6 +110,7 @@ import TransitionElm from './learn/transition/element.vue'
 
 
 /* props */
+// import PropsLearn from './learn/props/index.vue'
 // createApp(PropsLearn).mount('#app')
 
 
@@ -146,6 +121,9 @@ import TransitionElm from './learn/transition/element.vue'
     3.子组件 initSlot 时将 children 对象挂载到子组件 instance.slots 中，完成了父组件的 vnode 传递给子组件的过程
     4.子组件生成 subTree 的过程中，执行 renderSlot 将返回结果作为子组件的 children
 */
+// import DefaultSlot from './learn/slot/default-slot/index.vue'
+// import NameSlot from './learn/slot/name-slot/index.vue'
+// import NamespaceSlot from './learn/slot/namespace-slot/index.vue'
 // createApp(DefaultSlot).mount('#app')
 // createApp(NameSlot).mount('#app')
 // createApp(NamespaceSlot).mount('#app')
@@ -160,6 +138,8 @@ import TransitionElm from './learn/transition/element.vue'
     5.patchElement 时执行 vnode.dirs 中的 beforeUpdate 和 queuePostRenderEffect -> updated
     6.unmount -> 时执行 vnode.dirs 中的 beforeUnmount 和 queuePostRenderEffect -> unmounted
 */
+// import Global from './learn/directive/index.vue'
+// import Focus from './learn/directive/focus.vue'
 // const globalLog = {
 //   beforeMount() {
 //     console.log('log directive before mount')
@@ -198,6 +178,8 @@ import TransitionElm from './learn/transition/element.vue'
       trigger 派发通知
       执行 vmodel 的 beforeUpdate 重置 input.value 为最新值
 */
+// import AppModel from './learn/v-model/index.vue'
+// import CustomInput from './learn/v-model/custom-input.vue'
 // const app = createApp(AppModel)
 // app.component('custom-input', CustomInput)
 // app.mount('#app')
@@ -210,6 +192,8 @@ import TransitionElm from './learn/transition/element.vue'
       拿到 target，并判断是否 disabled 来觉得起子节点挂载的父节点是 target 还是 container
 
 */
+// import TeleportElement from './learn/teleport/element.vue'
+// import TeleportComponent from './learn/teleport/component/index.vue'
 // createApp(TeleportElement).mount('#app')
 // createApp(TeleportComponent).mount('#app')
 
@@ -239,14 +223,15 @@ import TransitionElm from './learn/transition/element.vue'
         此时则不会执行一整套创建组件的过程，从而优化了性能
       5.updated hook -> queuePostRenderEffect -> flushPostFlushCbs -> cacheSubtree
 */
+// import AppKeepAlive from './learn/keep-alive/index.vue'
 // createApp(AppKeepAlive).mount('#app')
 
 
 /* 
-  transtion:
-    transition 组件是基于 baseTransition 的高阶函数式组件
-  高阶组件:
-    当前函数返回的是一个组件函数
-
+transtion:
+  transition 组件是基于 baseTransition 的高阶函数式组件
+高阶组件:
+  当前函数返回的是一个组件函数
 */
+import TransitionElm from './learn/transition/element.vue'
 createApp(TransitionElm).mount('#app')
