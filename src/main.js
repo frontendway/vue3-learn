@@ -16,7 +16,7 @@ import { createApp } from 'vue'
 /* 
   setupState 可在模板中访问原理
   setupContext 传入条件
-  setupState 与 data 优先级:
+  setupState 与 data 优先级
     模板编译后的结果访问的是 $data.msg 并依赖收集，而修改 msg 值是派发的 setupState 的 msg
     但 setupState.msg 模板中并未使用，所以没有做依赖收集，导致无法派发通知，最终页面无任何响应
 */
@@ -93,7 +93,7 @@ import { createApp } from 'vue'
 
 
 /* 
-  block tree:
+  block tree
     vue3 为了运行时更新性能，设计了 block tree
     block tree 就是将模板基于动态节点指令切割的嵌套区块，每个区块只需要一个数组来追踪自身包含的动态节点
   为何动态组件、svg、foreignObject、teleport、suspense、keep-alive、v-if 要单独维护一个 block？
@@ -115,7 +115,7 @@ import { createApp } from 'vue'
 
 
 /* 
-  slot 原理:
+  slot 原理
     1.编译生成的 render 函数，子组件的 vnode 的 children 是一个对象
     2.创建子组件 vnode 时执行的 normalizeChildren 将 shapeFlag = slot | statefulComponent
     3.子组件 initSlot 时将 children 对象挂载到子组件 instance.slots 中，完成了父组件的 vnode 传递给子组件的过程
@@ -130,7 +130,7 @@ import { createApp } from 'vue'
 
 
 /* 
-  指令:
+  指令
     1.全局指令注册 app.directive() 就是往 app.context.directives 对象上扩展指令定义
     2.render 函数执行时先执行 resolveDirective 根据指令名称解析出指令定义
     3.withDirectives 将指令挂载到 vnode.dirs 数组中
@@ -168,7 +168,7 @@ import { createApp } from 'vue'
 
 
 /* 
-  v-model:
+  v-model
     1.首次渲染
       withDirectives 将内置 vmodel 指令定义混入到 vnode.dirs 数组中
       mountElement 执行 vmodel 的 created 函数，就是给 input元素绑定一堆的事件函数
@@ -186,7 +186,7 @@ import { createApp } from 'vue'
 
 
 /* 
-  teleport:
+  teleport
     1.首次渲染
       创建完 teleport 内置组件其 vnode 的 shapeFlag & 64 判断为 teleport 组件后，直接执行 type.process()
       拿到 target，并判断是否 disabled 来觉得起子节点挂载的父节点是 target 还是 container
@@ -199,7 +199,7 @@ import { createApp } from 'vue'
 
 
 /* 
-  keep-alive:
+  keep-alive
     首次渲染
       1.创建 keep-alive 组件 vnode 时，由于 children 是数组而非对象，所以 vnode.shapeFlag |= ARRAY_CHILDREN(16) 结果值是 20
       2.执行 setupComponent -> initSlot 中 vnode.shapeFlag & SLOTS_CHILDREN(32) 不满足走 else 逻辑
@@ -228,10 +228,20 @@ import { createApp } from 'vue'
 
 
 /* 
-transtion:
+transtion
   transition 组件是基于 baseTransition 的高阶函数式组件
-高阶组件:
+高阶组件
   当前函数返回的是一个组件函数
+初始化
+  1.定义 transition 函数式组件，设置 props 和 displayName，props 是当前平台与 baseTransition.props 的一层合并
+  2.render.call 生成 transition 组件的 vnode
+  3.processComponent -> initProps initSlot -> setupRenderEffect 
+    -> renderComponentRoot 因 vnode.shapeFlag 是 2 则执行 Transition(props, { slot }) 生成 baseTransition 的 vnode
+    它的 type 是 baseTransition 对象而非函数
+  4.path 
+    -> processComponent setupComponent 时执行 baseTransition 的 setup 函数将返回值作为 instance.render
+    -> vnode.shapeFlag 是 4 是有状态组件 -> setupRenderEffect -> renderComponentRoot 返回 slot 组件
+    -> processElement 完成普通组件的挂载
 */
 import TransitionElm from './learn/transition/element.vue'
 createApp(TransitionElm).mount('#app')
