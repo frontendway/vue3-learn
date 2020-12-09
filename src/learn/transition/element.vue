@@ -1,5 +1,5 @@
 <template>
-  <transition name="fade">
+  <transition name="fade" :appear="true">
     <div v-if="state.ok">toggled content</div>
   </transition>
   <button @click="toggle">toggle</button>
@@ -29,6 +29,6 @@ export default {
   opacity: 0;
 }
 .fade-enter-active,.fade-leave-active{
-  transition: all 5s linear 0s;
+  transition: all 15s linear 0s;
 }
 </style>
