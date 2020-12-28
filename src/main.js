@@ -235,13 +235,24 @@ transtion
 初始化
   1.定义 transition 函数式组件，设置 props 和 displayName，props 是当前平台与 baseTransition.props 的一层合并
   2.render.call 生成 transition 组件的 vnode
-  3.processComponent -> initProps initSlot -> setupRenderEffect 
+  3.processComponent -> initProps initSlot -> setupRenderEffect
     -> renderComponentRoot 因 vnode.shapeFlag 是 2 则执行 Transition(props, { slot }) 生成 baseTransition 的 vnode
     它的 type 是 baseTransition 对象而非函数
-  4.path 
+  4.path
     -> processComponent setupComponent 时执行 baseTransition 的 setup 函数将返回值作为 instance.render
     -> vnode.shapeFlag 是 4 是有状态组件 -> setupRenderEffect -> renderComponentRoot 返回 slot 组件
     -> processElement 完成普通组件的挂载
 */
-import TransitionElm from './learn/transition/element.vue'
-createApp(TransitionElm).mount('#app')
+// import TransitionElm from './learn/transition/element.vue'
+// createApp(TransitionElm).mount('#app')
+
+
+/* 无子组件 diff */
+import Diff2 from './learn/diff2/index.vue'
+createApp(Diff2).mount('#app')
+
+
+/* 有子组件的 diff */
+// import Diff1 from './learn/diff1/diff1.vue'
+// 子组件接收的 props 更新时 trigger 派发通知的依赖为何是空数组
+// createApp(Diff1).mount('#app')
