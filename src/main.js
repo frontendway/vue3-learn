@@ -190,7 +190,6 @@ import { createApp } from 'vue'
     1.首次渲染
       创建完 teleport 内置组件其 vnode 的 shapeFlag & 64 判断为 teleport 组件后，直接执行 type.process()
       拿到 target，并判断是否 disabled 来觉得起子节点挂载的父节点是 target 还是 container
-
 */
 // import TeleportElement from './learn/teleport/element.vue'
 // import TeleportComponent from './learn/teleport/component/index.vue'
@@ -238,7 +237,7 @@ transtion
   3.processComponent -> initProps initSlot -> setupRenderEffect
     -> renderComponentRoot 因 vnode.shapeFlag 是 2 则执行 Transition(props, { slot }) 生成 baseTransition 的 vnode
     它的 type 是 baseTransition 对象而非函数
-  4.path
+  4.patch
     -> processComponent setupComponent 时执行 baseTransition 的 setup 函数将返回值作为 instance.render
     -> vnode.shapeFlag 是 4 是有状态组件 -> setupRenderEffect -> renderComponentRoot 返回 slot 组件
     -> processElement 完成普通组件的挂载
