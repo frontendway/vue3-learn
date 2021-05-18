@@ -71,7 +71,12 @@ import { createApp } from 'vue'
 // createApp(Watch22).mount('#app')
 /* 侦听多个响应式对象组成的数组 */
 // createApp(Watch3).mount('#app')
-/* watchEffect */
+/* 
+  watchEffect 
+  watch 与 watchEffect 区别
+    watchEffect 立即执行
+    watchEffect 无法获取旧值
+*/
 // createApp(Watch4).mount('#app')
 /* onInvalidate */
 // createApp(Watch5).mount('#app')
